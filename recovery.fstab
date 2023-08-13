@@ -1,44 +1,36 @@
-# Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted (subject to the limitations in the
-# disclaimer below) provided that the following conditions are met:
-#
-#    * Redistributions of source code must retain the above copyright
-#      notice, this list of conditions and the following disclaimer.
-#
-#    * Redistributions in binary form must reproduce the above
-#      copyright notice, this list of conditions and the following
-#      disclaimer in the documentation and/or other materials provided
-#      with the distribution.
-#
-#    * Neither the name of The Linux Foundation nor the names of its
-#      contributors may be used to endorse or promote products derived
-#      from this software without specific prior written permission.
-#
-# NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
-# GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
-# HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
-# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-# IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
-# GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-# IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
-# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-# Android fstab file.
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-
-#<src>                                                 <mnt_point>            <type>  <mnt_flags and options>                            <fs_mgr_flags>
-system	                                               /system                ext4    ro                                                 wait,logical,first_stage_mount
-odm                                                    /odm                   ext4    ro                                                 wait,logical,first_stage_mount
-product                                                /product               ext4    ro                                                 wait,logical,first_stage_mount
-vendor                                                 /vendor                ext4    ro                                                 wait,logical,first_stage_mount
-/dev/block/by-name/metadata                            /metadata              ext4    noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic,sync    wait,formattable,first_stage_mount,check
-/dev/block/bootdevice/by-name/userdata                 /data                  f2fs    noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678,inlinecrypt    latemount,wait,check,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,quota,reservedsize=128M,sysfs_path=/sys/devices/platform/soc/1d84000.ufshc,checkpoint=fs,keydirectory=/metadata/vold/metadata_encryption
-/dev/block/bootdevice/by-name/misc                     /misc                  emmc    defaults                                           defaults,first_stage_mount
+/system             erofs     system                                flags=display=system;logical
+/system             f2fs      system                                flags=display=system;logical
+/system             ext4      system                                flags=display=system;logical
+/vendor             erofs     vendor                                flags=display=vendor;logical
+/product            erofs     product                               flags=display=product;logical
+/odm                erofs     odm                                   flags=display=odm;logical
+/boot               emmc      /dev/block/by-name/boot               flags=display=boot
+/recovery           emmc      /dev/block/by-name/recovery           flags=display=recovery
+/data               f2fs      /dev/block/by-name/userdata           flags=display=data
+/cache              ext4      /dev/block/by-name/cache              flags=display=cache
+/efs                ext4      /dev/block/by-name/sec_efs            flags=display=efs
+/carrier            ext4      /dev/block/by-name/carrier            flags=display=carrier
+/preload            ext4      /dev/block/by-name/hidden             flags=display=preload
+/misc               emmc      /dev/block/by-name/misc               flags=display=misc
+/metadata           ext4      /dev/block/by-name/metadata           flags=display=metadata
+/sdcard             sdfat     /dev/block/mmcblk1p1                  flags=display=sdcard
+/modem              emmc      /dev/block/by-name/apnhlos            flags=display=modem
+/mdm                emmc      /dev/block/by-name/modem              flags=display=mdm
+/dsp                emmc      /dev/block/by-name/dsp                flags=display=dsp
+/dtbo               emmc      /dev/block/by-name/dtbo               flags=display=dtbo
+/md1img             emmc      /dev/block/by-name/md1img             flags=display=md1img
+/spmfw              emmc      /dev/block/by-name/spmfw              flags=display=spmfw
+/scp1               emmc      /dev/block/by-name/scp1               flags=display=scp1
+/sspm_1             emmc      /dev/block/by-name/sspm_1             flags=display=sspm_1
+/keydata            ext4      /dev/block/by-name/keydata            flags=display=keydata
+/keyrefuge          f2fs      /dev/block/by-name/keyrefuge          flags=display=keyrefuge
+/gz1                emmc      /dev/block/by-name/gz1                flags=display=gz1
+/optics             ext4      /dev/block/by-name/optics             flags=display=optics
+/prism              ext4      /dev/block/by-name/prism              flags=display=prism
+/cam_vpu1           emmc      /dev/block/by-name/cam_vpu1           flags=display=cam_vpu1
+/cam_vpu2           emmc      /dev/block/by-name/cam_vpu2           flags=display=cam_vpu2
+/cam_vpu3           emmc      /dev/block/by-name/cam_vpu3           flags=display=cam_vpu3
+/pi_img             emmc      /dev/block/by-name/pi_img             flags=display=pi_img
+/vbmeta_samsung     emmc      /dev/block/by-name/vbmeta_samsung     flags=display=vbmeta_samsung
+/vendor_dlkm        erofs     vendor_dlkm                           flags=display=vendor_dlkm;logical
+/vendor_boot        emmc      /dev/block/by-name/vendor_boot        flags=display=vendor_boot
