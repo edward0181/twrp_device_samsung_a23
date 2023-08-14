@@ -10,3 +10,4 @@ PRODUCT_MAKEFILES := \
 
 COMMON_LUNCH_CHOICES := \
    omni_a23-eng
+   omni_a23-userdebug
