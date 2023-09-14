@@ -9,4 +9,7 @@ LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),a23)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
+include $(LOCAL_PATH)/source.c
+include $(LOCAL_PATH)/libshared.so
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/include
 endif

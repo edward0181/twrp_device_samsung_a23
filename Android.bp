@@ -6,4 +6,13 @@
 //
 
 soong_namespace {
+    cc_library {
+        name: "libshared",
+        srcs: ["source.c"],
+    },
+    cc_binary {
+        name: "binary",
+        srcs: ["main.c"],
+        shared_libs: ["libshared"],
+    },
 }
