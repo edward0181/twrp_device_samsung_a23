@@ -6,7 +6,7 @@ Add to
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <project name="mrx7014/android_device_samsung_a23" path="device/samsung/a23" remote="github" revision="twrp_a23" />
+  <project name="mrx7014/twrp_android_device_samsung_a23" path="device/samsung/a23" remote="github" revision="twrp_a23" />
 </manifest>
 
 ```
