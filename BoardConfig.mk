@@ -7,8 +7,16 @@
 
 DEVICE_PATH := device/samsung/a23
 
-# For building with minimal manifest
+# ---- various build issues ---- #
 ALLOW_MISSING_DEPENDENCIES := true
+SOONG_ALLOW_MISSING_DEPENDENCIES := true
+
+# cure for "ELF binaries" problems
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
+# deal with "error: overriding commands for target" problems
+BUILD_BROKEN_DUP_RULES := true
+#
 
 # Architecture
 TARGET_ARCH := arm64
@@ -84,6 +92,7 @@ TARGET_BOARD_PLATFORM := bengal
 
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
+BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -117,7 +126,17 @@ PLATFORM_VERSION := 16.1.0
 TW_DEVICE_VERSION := 1
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
+TW_NO_REBOOT_BOOTLOADER := false
+TW_SCREEN_BLANK_ON_BOOT := true
 TW_HAS_DOWNLOAD_MODE := true
-TW_NO_LEGACY_PROPS := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_INCLUDE_NTFS_3G := true
+TW_USE_TOOLBOX := true
+TW_NO_LEGACY_PROPS := true
+BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
