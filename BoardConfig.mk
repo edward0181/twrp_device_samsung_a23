@@ -7,16 +7,8 @@
 
 DEVICE_PATH := device/samsung/a23
 
-# ---- various build issues ---- #
 ALLOW_MISSING_DEPENDENCIES := true
 SOONG_ALLOW_MISSING_DEPENDENCIES := true
-
-# cure for "ELF binaries" problems
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
-# deal with "error: overriding commands for target" problems
-BUILD_BROKEN_DUP_RULES := true
-#
 
 # Architecture
 TARGET_ARCH := arm64
