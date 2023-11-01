@@ -28,16 +28,6 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a9
 # Assert
 TARGET_OTA_ASSERT_DEVICE := a23
 AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    vbmeta \
-    vbmeta_system \
-    vbmeta_vendor \
-    dtbo \
-    boot \
-    system \
-    system_ext \
-    vendor \
-    product
 
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
