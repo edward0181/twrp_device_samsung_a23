@@ -10,3 +10,15 @@ LOCAL_PATH := device/samsung/a23
 # Assert
 TARGET_OTA_ASSERT_DEVICE := a23
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
+# tzdata
+PRODUCT_PACKAGES_ENG += \
+    tzdata_twrp
