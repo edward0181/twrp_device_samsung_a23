@@ -1,3 +1,20 @@
+
+
+Code
+Issues
+Pull requests
+Actions
+Commit
+a23: Create recovery.fstab
+ android-12.1
+@mrx7014
+mrx7014 committed 3 days ago
+1 parent 0fea7d8
+commit 66d03d7
+Showing 1 changed file with 47 additions and 0 deletions.
+ 47 changes: 47 additions & 0 deletions47  
+recovery/root/system/etc/recovery.fstab
+@@ -0,0 +1,47 @@
 # Copyright (c) 2019-2020 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -35,13 +52,13 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 #<src>                                                 <mnt_point>            <type>  <mnt_flags and options>                            <fs_mgr_flags>
-system	                                                /system	               f2fs	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount,avb=vbmeta,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
-product                                                 /product               f2fs	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount
-vendor                                                  /vendor                f2fs	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount
-odm                                                     /odm	               f2fs	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount
+system	                                                /system	               ext4	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount,avb=vbmeta,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+product                                                 /product               ext4	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount
+vendor                                                  /vendor                ext4	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount
+odm                                                     /odm	               ext4	   ro,barrier=1,discard	                                wait,avb,logical,first_stage_mount
 
 
-/dev/block/by-name/metadata                             /metadata              f2fs    noatime,nosuid,nodev,discard                         wait,check,formattable,first_stage_mount
+/dev/block/by-name/metadata                             /metadata              ext4    noatime,nosuid,nodev,discard                         wait,check,formattable,first_stage_mount
 /dev/block/bootdevice/by-name/userdata					/data				   f2fs	   noatime,nosuid,nodev,discard,inlinecrypt,reserve_root=32768,resgid=5678,fsync_mode=nobarrier 	latemount,wait,check,formattable,reservedsize=128M,checkpoint=fs
 /dev/block/bootdevice/by-name/misc                      /misc                  emmc    defaults                                             defaults
 /dev/block/mmcblk1p1					                /external_sd           auto    defaults                                             defaults
