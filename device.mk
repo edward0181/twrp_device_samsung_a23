@@ -7,8 +7,6 @@
 
 LOCAL_PATH := device/samsung/a23
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := a23
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 PRODUCT_PACKAGES += \
