@@ -17,5 +17,5 @@ $(call inherit-product, device/samsung/a23/device.mk)
 PRODUCT_DEVICE := a23
 PRODUCT_NAME := twrp_a23
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-A235F
+PRODUCT_MODEL := SM-A235
 PRODUCT_MANUFACTURER := samsung
